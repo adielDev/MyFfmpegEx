@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import adiel.myffmpegex.services.MyService;
+
 import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
     VideoView  mVideoView;
     Uri videoUri;
-    EditText etResult;
+    Button btnCompressOnService;
 
     TextView tvResult;
     private Uri _videoFileUri;
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mVideoView = (VideoView) findViewById(R.id.mVideoView);
         tvResult = (TextView) findViewById(R.id.tvResult);
-        etResult = (EditText) findViewById(R.id.etResult);
+        btnCompressOnService = (Button) findViewById(R.id.btnCompressOnService);
     }
 
 
@@ -108,14 +111,12 @@ public class MainActivity extends AppCompatActivity {
                 public void onStart() {
                     Log.d("temp","exeCompress onStart");
                     String s = "exeCompress onStart:";
-                    etResult.append(s);
                     Log.d("temp",s);
                 }
 
                 @Override
                 public void onProgress(String message) {
                     String s = "exeCompress onProgress:" + message;
-                    etResult.append(s);
                     Log.d("temp",s);
                 }
 
@@ -123,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onFailure(String message) {
                     Toast.makeText(MainActivity.this, "onFailure", Toast.LENGTH_SHORT).show();
                     String s = "exeCompress onFailure:" + message;
-                    etResult.append(s);
                     Log.d("temp",s);
                 }
 
@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
                     Log.d("temp","exeCompress onSuccess:"+message);
                     String s = "exeCompress onSuccess:" + message;
-                    etResult.append(s);
                     Log.d("temp",s);
                 }
 
@@ -140,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onFinish() {
                     Toast.makeText(MainActivity.this, "onFinish", Toast.LENGTH_SHORT).show();
                     String s = "exeCompress onFinish:" ;
-                    etResult.append(s);
                     Log.d("temp",s);
                 }
             });
@@ -149,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.d("temp","FFmpegCommandAlreadyRunningException");
             String s = "FFmpegCommandAlreadyRunningException";
-            etResult.append(s);
             Log.d("temp",s);
         }
 
@@ -221,4 +218,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void compressOnService(View view) {
+        String vidPath = videoUri.getPath();
+        Uri vidPathOutput = generateTimeStampVideoFileUri("FfOutput");
+        String[] cmd= new String[]{"-i",vidPath,"-b:v","2.4M","-bufsize","2.404M","-maxrate","5M","-preset","fast",vidPathOutput.getPath()};
+        Intent intent = new Intent(MainActivity.this, MyService.class);
+        intent.putExtra("cmd",cmd);
+        startService(intent);
+    }
 }
