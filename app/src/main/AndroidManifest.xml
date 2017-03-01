@@ -25,6 +25,7 @@
         </activity>
 
         <service
+            android:process=":compress"
             android:name=".services.MyService"
             android:enabled="true"
             android:exported="false"></service>
