@@ -3,6 +3,7 @@ package adiel.myffmpegex;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Environment;
@@ -225,5 +226,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MyService.class);
         intent.putExtra("cmd",cmd);
         startService(intent);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Toast.makeText(this, "onConfigurationChanged", Toast.LENGTH_SHORT).show();
+        Log.d("temp","onConfigurationChanged");
     }
 }
