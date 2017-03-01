@@ -31,9 +31,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import adiel.myffmpegex.services.MyService;
-
-import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
@@ -219,14 +216,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void compressOnService(View view) {
-        String vidPath = videoUri.getPath();
-        Uri vidPathOutput = generateTimeStampVideoFileUri("FfOutput");
-        String[] cmd= new String[]{"-i",vidPath,"-b:v","2.4M","-bufsize","2.404M","-maxrate","5M","-preset","fast",vidPathOutput.getPath()};
-        Intent intent = new Intent(MainActivity.this, MyService.class);
-        intent.putExtra("cmd",cmd);
-        startService(intent);
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
