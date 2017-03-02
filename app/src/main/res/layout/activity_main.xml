@@ -43,6 +43,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+<Button
+    android:id="@+id/btnPickVideo"
+        android:text="load binari in seperate process"
+        android:onClick="loadBinariInSeperateProcess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
 
 </LinearLayout>
