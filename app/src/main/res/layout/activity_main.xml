@@ -12,8 +12,12 @@
     tools:context="adiel.myffmpegex.MainActivity">
 
 
-        <adiel.myffmpegex.MyTextView
-            android:layoutDirection="rtl"
+        <TextView
+            android:text="the layout gravity of the blue textView equals to 'end' in rtl language its mean left and in ltr its mean right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layoutDirection="inherit"
             android:layout_gravity="end"
             android:id="@+id/one"
             android:background="@android:color/holo_blue_bright"
@@ -25,18 +29,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="right" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/takeVideo"
+                android:onClick="takeVideo"
+                android:text="take video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnCompress"
+                android:onClick="compress"
+                android:text="Compress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvResult"
             android:text="result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/btnCompress"
-            android:onClick="compress"
-            android:text="Compress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
     <VideoView
         android:id="@+id/mVideoView"
         android:layout_width="match_parent"
