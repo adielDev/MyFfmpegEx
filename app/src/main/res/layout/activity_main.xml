@@ -29,36 +29,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="right" />
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/takeVideo"
-                android:onClick="takeVideo"
-                android:text="take video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btnCompress"
-                android:onClick="compress"
-                android:text="Compress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnLoadBinari"
+        android:text="load binari"
+        android:onClick="loadBinari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvResult"
-            android:text="result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    <VideoView
-        android:id="@+id/mVideoView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-
+<Button
+    android:id="@+id/btnLoadBinariInSEperateProcess"
+        android:text="load binari in seperate process"
+        android:onClick="loadBinariInSeperateProcess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 

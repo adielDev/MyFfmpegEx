@@ -21,11 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PermissionActivity">
 
-        </activity>
-
-
+        <service
+            android:process=":loadbinary"
+            android:name=".LoadBinaryService"
+            android:exported="false"></service>
     </application>
 
 </manifest>
