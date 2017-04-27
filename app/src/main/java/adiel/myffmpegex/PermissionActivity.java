@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import adiel.activities.MainMenu;
+
 public class PermissionActivity extends AppCompatActivity {
 
     @Override
@@ -28,7 +30,7 @@ public class PermissionActivity extends AppCompatActivity {
             strings[0] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
             strings[1] = Manifest.permission.READ_EXTERNAL_STORAGE;
 
-            ActivityCompat.requestPermissions(this,strings,1);
+            ActivityCompat.requestPermissions(this,strings,100);
         }
     }
     @Override
@@ -44,6 +46,6 @@ public class PermissionActivity extends AppCompatActivity {
     }
 
     private void startActivityMain() {
-        startActivity(new Intent(this,MainActivity.class));
+        finish();
     }
 }
